@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dunia Cinta Abangg & Adee 💖 — GF Day</title>
+  <meta name="description" content="Web ultra-cinematic GF Day dari Abangg untuk Adee: surat cinta, galeri, musik, timeline, countdown, dan kejutan romantis." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg1: #ff9a9e;
+      --bg2: #fad0c4;
+      --primary: #ff4d6d;
+      --primary-dark: #e03b5a;
+      --text: #333;
+      --text-soft: #555;
+      --panel: rgba(255,255,255,0.9);
+      --shadow: rgba(0,0,0,0.2);
+      --accent: #ffd1dc;
+      --glass: rgba(255,255,255,0.5);
+      --dark-bg1: #1e1b22;
+      --dark-bg2: #3a2a3f;
+      --dark-panel: rgba(30,27,34,0.85);
+      --dark-text: #f1e8f4;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      color: var(--text);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    body.dark {
+      background: linear-gradient(135deg, var(--dark-bg1), var(--dark-bg2));
+      color: var(--dark-text);
+    }
+
+    .container {
+      max-width: 1024px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    header.hero {
+      position: relative;
+      padding: 60px 24px 40px;
+      text-align: center;
+    }
+
+    header.hero .title {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: 0.5px;
+      margin: 0;
+    }
+
+    body.dark header.hero .title {
+      color: #ff86a0;
+    }
+
+    header.hero .subtitle {
+      margin: 10px auto 20px;
+      max-width: 640px;
+      font-weight: 300;
+      color: var(--text-soft);
+    }
+
+    body.dark header.hero .subtitle {
+      color: #d5c8d9;
+    }
+
+    .controls {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 10px 16px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      color: #fff;
+      background: var(--primary);
+      box-shadow: 0 8px 24px var(--shadow);
+      transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); background: var(--primary-dark); box-shadow: 0 12px 28px var(--shadow); }
+    .btn.secondary { background: #7c5cff; }
+    .btn.glass { background: var(--glass); color: var(--text); border: 1px solid rgba(255,255,255,0.4); }
+    body.dark .btn.glass { color: var(--dark-text); }
+
+    .panel {
+      background: var(--panel);
+      border-radius: 18px;
+      box-shadow: 0 10px 28px var(--shadow);
+      padding: 20px;
+      margin: 20px 0;
+      backdrop-filter: saturate(120%) blur(2px);
+    }
+
+    body.dark .panel {
+      background: var(--dark-panel);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.5);
+    }
+
+    .section-title {
+      margin: 0 0 8px 0;
+      font-size: 1.6rem;
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    body.dark .section-title { color: #ff86a0; }
+
+    .lead {
+      margin: 0 0 16px 0;
+      color: var(--text-soft);
+      font-weight: 400;
+    }
+
+    body.dark .lead { color: #d5c8d9; }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 860px) {
+      .split { grid-template-columns: 1fr; }
+      header.hero { padding: 40px 14px 30px; }
+      .container { padding: 14px; }
+    }
+
+    .intro-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .rose {
+      width: 120px;
+      height: 120px;
+      margin: 14px auto;
+      background: url('https://pngimg.com/uploads/rose/rose_PNG669.png') center/contain no-repeat;
+      animation: bloom 1.6s ease-out forwards;
+      transform-origin: center;
+      opacity: 0;
+    }
+
+    @keyframes bloom {
+      0% { transform: scale(0.2) rotate(-18deg); opacity: 0; filter: blur(6px); }
+      70% { transform: scale(1.06) rotate(8deg); opacity: 1; filter: blur(0); }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+
+    .love-letter {
+      line-height: 1.8;
+      white-space: pre-line;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .timeline {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .timeline li {
+      position: relative;
+      padding: 16px 16px 16px 42px;
+      border-left: 3px solid var(--accent);
+      margin: 8px 0;
+      background: rgba(255,255,255,0.6);
+      border-radius: 12px;
+    }
+
+    body.dark .timeline li { background: rgba(255,255,255,0.06); }
+
+    .timeline li::before {
+      content: "❤";
+      position: absolute;
+      left: 12px;
+      top: 16px;
+      color: var(--primary);
+      font-size: 16px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    @media (max-width: 860px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .photo {
+      height: 140px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #ffd1dc, #ffe7ee);
+      display: grid;
+      place-items: center;
+      color: var(--text-soft);
+      font-weight: 600;
+      box-shadow: 0 6px 18px var(--shadow);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+    }
+
+    .photo:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 10px 24px var(--shadow);
+    }
+
+    .music {
+      text-align: center;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto;
+      cursor: pointer;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 10px 24px var(--shadow);
+    }
+
+    .thumbnail {
+      width: 100%;
+      display: block;
+    }
+
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 48px;
+      color: #fff;
+      background: rgba(0,0,0,0.55);
+      border-radius: 50%;
+      padding: 12px 18px;
+      border: 2px solid rgba(255,255,255,0.6);
+    }
+
+    #ytPlayer iframe {
+      width: 100%;
+      max-width: 520px;
+      height: 300px;
+      border-radius: 14px;
+      box-shadow: 0 10px 24px var(--shadow);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    @media (max-width: 860px) { .grid-3 { grid-template-columns: 1fr; } }
+
+    .fact {
+      background: rgba(255,255,255,0.7);
+      border-radius: 12px;
+      padding: 14px;
+      box-shadow: 0 6px 18px var(--shadow);
+    }
+
+    body.dark .fact { background: rgba(255,255,255,0.08); }
+
+    .checklist { list-style: none; padding: 0; margin: 0; }
+    .checklist li {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 8px;
+      align-items: start;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.6);
+      margin-bottom: 8px;
+    }
+    body.dark .checklist li { background: rgba(255,255,255,0.06); }
+    .checkmark { color: var(--primary); font-weight: 800; }
+
+    #countdownBox {
+      display: grid;
+      place-items: center;
+      padding: 16px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.6);
+      box-shadow: 0 6px 18px var(--shadow);
+    }
+    body.dark #countdownBox { background: rgba(255,255,255,0.06); }
+
+    #heartCanvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 30px 14px 60px;
+      color: var(--text-soft);
+      font-size: 0.95rem;
+    }
+
+    /* Modals & overlays */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 40;
+    }
+
+    .overlay.show { display: flex; }
+
+    .modal {
+      width: min(92vw, 640px);
+      background: var(--panel);
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      padding: 18px;
+      transform: translateY(18px);
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    body.dark .modal { background: var(--dark-panel); }
+
+    .overlay.show .modal {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 8px;
+      border-bottom: 1px dashed rgba(0,0,0,0.12);
+    }
+
+    .modal-title { font-weight: 800; color: var(--primary); }
+    body.dark .modal-title { color: #ff86a0; }
+
+    .close {
+      border: none;
+      background: transparent;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--text);
+    }
+    body.dark .close { color: var(--dark-text); }
+
+    .quote {
+      font-style: italic;
+      color: var(--text-soft);
+      padding: 4px 0;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: saturate(120%) blur(6px);
+      background: linear-gradient(135deg, rgba(255,255,255,0.75), rgba(255,255,255,0.6));
+      border-bottom: 1px solid rgba(255,255,255,0.5);
+    }
+
+    body.dark .nav {
+      background: linear-gradient(135deg, rgba(30,27,34,0.85), rgba(30,27,34,0.75));
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav .container {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px;
+    }
+
+    .nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 8px;
+      padding: 8px 10px;
+    }
+
+    .nav a:hover {
+      background: rgba(255,255,255,0.7);
+    }
+
+    body.dark .nav a { color: var(--dark-text); }
+    body.dark .nav a:hover { background: rgba(255,255,255,0.08); }
+
+    .small {
+      font-size: 0.9rem;
+    }
+
+    .chip {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.6);
+      margin: 4px 6px 8px 0;
+      box-shadow: 0 6px 18px var(--shadow);
+      font-weight: 600;
+    }
+
+    body.dark .chip { background: rgba(255,255,255,0.08); }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    .delay-1 { animation-delay: 0.15s; }
+    .delay-2 { animation-delay: 0.3s; }
+    .delay-3 { animation-delay: 0.45s; }
+    .delay-4 { animation-delay: 0.6s; }
+    .delay-5 { animation-delay: 0.75s; }
+    .delay-6 { animation-delay: 0.9s; }
+    .delay-7 { animation-delay: 1.05s; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Scroll marker */
+    .marker {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      padding: 8px;
+    }
+
+    /* Promise list */
+    .promise {
+      background: rgba(255,255,255,0.6);
+      border-radius: 12px;
+      padding: 12px;
+      box-shadow: 0 6px 18px var(--shadow);
+      margin-bottom: 10px;
+    }
+    body.dark .promise { background: rgba(255,255,255,0.06); }
+
+    /* Chat simulator */
+    .chat {
+      display: grid;
+      gap: 10px;
+    }
+    .bubble {
+      max-width: 82%;
+      padding: 10px 12px;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px var(--shadow);
+    }
+    .bubble.me { background: #ffe6eb; margin-left: auto; }
+    .bubble.you { background: #e9d9ff; margin-right: auto; }
+    body.dark .bubble.me { background: rgba(255,255,255,0.08); }
+    body.dark .bubble.you { background: rgba(255,255,255,0.12); }
+
+    .easter {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #fff3f6;
+      color: var(--text-soft);
+      border: 1px dashed #ffbdd0;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .easter:hover { transform: translateY(-1px) scale(1.02); }
+
+    .credits {
+      font-size: 0.85rem;
+      color: var(--text-soft);
+    }
+
+    /* Smooth anchor targets */
+    section { scroll-margin-top: 84px; }
+
+  </style>
+</head>
+<body>
+  <canvas id="heartCanvas"></canvas>
+
+  <nav class="nav">
+    <div class="container">
+      <strong>GF Day</strong>
+      <a href="#intro">Intro</a>
+      <a href="#surat">Surat</a>
+      <a href="#timeline">Timeline</a>
+      <a href="#musik">Musik</a>
+      <a href="#alasan">Alasan</a>
+      <a href="#janji">Janji</a>
+      <a href="#countdown">Ucapan</a>
+      <button id="darkModeToggle" class="btn glass small">🌙 Mode Malam</button>
+    </div>
+  </nav>
+
+  <header class="hero fade-in delay-2" id="intro">
+    <div class="container">
+      <h1 class="title">GF Day: Dunia Cinta Abangg & Adee 💕</h1>
+      <p class="subtitle">Tempat kita mengenang, tertawa, dan terus jatuh cinta. Dari Abangg untuk Adee, sepanjang waktu.</p>
+      <div class="controls">
+        <button id="loveBtn" class="btn">💌 Buka Cinta Abangg</button>
+        <button id="showSurprise" class="btn secondary">🎁 Surprise</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="panel intro-card fade-in delay-3" id="surat">
+      <h2 class="section-title">Surat cinta untuk Adee</h2>
+      <p class="lead">Pelan-pelan, baca ini kayak denger bisik Abangg di telinga kamu.</p>
+      <div class="rose"></div>
+      <div id="message" class="love-letter reveal">
+        Adee,
+        Abangg bikin halaman ini buat kamu. Biar tiap kita buka, rasanya kayak pertama kali jatuh cinta lagi.
+        Di antara hujan dan pelangi, ada kamu yang selalu jadi alasan.
+        Terima kasih udah jadi kamu—jujur, hangat, dan selalu bikin Abangg tenang.
+
+        Hari ini GF Day, tapi di hati Abangg, setiap hari itu kamu.
+        Kalau dunia ribut, peluk Abangg. Kalau kamu capek, sandar di bahu Abangg.
+        Abangg akan jagain kamu, mimpi kamu, senyum kamu—selamanya.
+
+        Dari Abangg, untuk Adee. Dengan segala yang Abangg punya.
+      </div>
+      <div class="marker">Scroll ke bawah buat lihat perjalanan kita ↓</div>
+    </section>
+
+    <section class="panel fade-in delay-4" id="timeline">
+      <h2 class="section-title">📜 Timeline cinta kita</h2>
+      <p class="lead">Jejak-jejak kecil yang bikin cinta kita jadi besar.</p>
+      <ul class="timeline">
+        <li><strong>Awal Ketemu:</strong> Di tempat yang nggak disangka, hati langsung nyambung.</li>
+        <li><strong>First Chat:</strong> Dari “hai” yang malu-malu, jadi ngobrol semalaman.</li>
+        <li><strong>First Date:</strong>bismillahh decemberr</li>
+        <li><strong>First I Love You:</strong> Kata yang bikin dunia berhenti sebentar.</li>
+        <li><strong>GF Day:</strong> Hari kita ngerayain cinta dengan cara yangg specialll.</li>
+        <li><strong>Mimpi Bareng:</strong> Susun rencana kecil yang jadi besar.</li>
+        <li><strong>Support System:</strong> Kamu peluk, Abangg tenang. Abangg peluk, kamu aman.</li>
+        <li><strong>Inside Jokes:</strong> Ketawa hal-hal receh yang orang lain nggak ngerti.</li>
+        <li><strong>Bad Days:</strong> Tapi kita tetap saling milih dan tetapp kuatt ngelewatin sama sama.</li>
+        <li><strong>Next:</strong> Halaman-halaman indah yang belum kita tulis.</li>
+      </ul>
+    </section>
+
+
+    <section class="panel music fade-in delay-6" id="musik">
+      <h2 class="section-title">🎵 Lagu kita</h2>
+      <p class="lead">Klik thumbnail untuk memulai musik romantis.</p>
+      <div class="video-wrapper" id="videoWrapper">
+        <img src="https://img.youtube.com/vi/2Vv-BfVoq4g/hqdefault.jpg" alt="Perfect - Ed Sheeran" class="thumbnail" />
+        <div class="play-button">▶</div>
+      </div>
+      <div id="ytPlayer" class="reveal">
+        <iframe
+          src=""
+          title="Perfect - Ed Sheeran"
+          frameborder="0"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div style="margin-top:10px">
+        <span class="chip">Perfect — Ed Sheeran</span>
+        <span class="chip">All I Want — Kodaline</span>
+        <span class="chip">I Like Me Better — Lauv</span>
+        <span class="chip">A Thousand Years — Christina Perri</span>
+      </div>
+    </section>
+
+    <section class="panel fade-in delay-6" id="alasan">
+      <h2 class="section-title">💖 50 alasan kenapa Abangg cinta Adee</h2>
+      <p class="lead">Setiap alasan ini adalah potongan kecil dari cinta besar.</p>
+      <div class="grid-3">
+        <div class="fact">
+          <ul class="checklist">
+            <li><span class="checkmark">✔</span><span>Senyum kamu bikin hari gelap jadi terang.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu jujur, bahkan saat dunia pengen pura-pura.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu sabar kalau Abangg lagi kusut.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu bikin rumah dari pelukan.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu ingat hal-hal kecil yang dilupakan orang.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu lucu—receh tapi bikin ketagihan.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu kuat, tapi tetap lembut.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu setia, itu mahal.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu bikin Abangg pengen jadi versi terbaik.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu bikin mimpi kerasa dekat.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu sayang keluarga.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu nggak takut jujur kalau salah.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu bikin malam jadi hangat.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu bisa jadi tenang, bisa jadi chaos, dua-duanya manis.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu bikin Abangg ngerasa cukup.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu berani mulai ulang saat perlu.</span></li>
+            <li><span class="checkmark">✔</span><span>Suara kamu itu obat.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu peduli hal-hal kecil.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu nggak drama—kamu real.</span></li>
+            <li><span class="checkmark">✔</span><span>Matamu cerita lebih dari kata-kata.</span></li>
+          </ul>
+        </div>
+        <div class="fact">
+          <ul class="checklist">
+            <li><span class="checkmark">✔</span><span>Kamu mau belajar bareng.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu ngerti Abangg tanpa banyak kata.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu bikin pagi semangat.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu nggak ninggalin saat susah.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu bikin hal biasa jadi spesial.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu suka jujur daripada jaim.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu bikin Abangg bangga.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu punya tawa paling menular.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu jadi alasan pulang.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu hafal kebiasaan Abangg.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu sabar kalau Abangg lemot.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu bikin rindu terasa manis.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu nggak takut manja.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu suka peluk tanpa alasan.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu bikin musik terasa lebih indah.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu bisa ngalah tanpa kalah.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu ajak Abangg sayang diri sendiri.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu bikin detik jadi berharga.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu ingat hari-hari penting.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu—selalu kamu.</span></li>
+          </ul>
+        </div>
+        <div class="fact">
+          <ul class="checklist">
+            <li><span class="checkmark">✔</span><span>Kamu bikin Abangg tenang.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu percaya dan dipercaya.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu itu rumah.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu bikin hari biasa jadi spesial.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu bikin Abangg ketawa.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu bikin Abangg rindu tiap hari.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu bikin Abangg belajar sabar.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu bikin hidup lebih lembut.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu ngerti diam Abangg.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu itu jawaban.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu itu pertanyaan paling indah.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu bikin pelukan jadi rumah.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu bikin mimpi jadi mungkin.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu bikin Abangg sayang, lagi dan lagi.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu bikin dunia berwarna.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu bikin Abangg percaya cinta.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu bikin “selamanya” terasa realistis.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu bikin waktu berhenti sebentar.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu bikin Abangg pengen pulang.</span></li>
+            <li><span class="checkmark">✔</span><span>Kamu adalah alasan.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel fade-in delay-7" id="janji">
+      <h2 class="section-title">🤝 Janji Abangg untuk Adee</h2>
+      <p class="lead">Ditulis hari ini, dijaga selamanya.</p>
+      <div class="promise">Abangg janji buat bawa adee kesiniii.</div>
+      <div class="promise">Abangg janji untuk jujur, bahkan kalau jujur itu bikin kita harus mikir ulang.</div>
+      <div class="promise">Abangg janji buat milih kamu, di hari baik dan di hari kurang baik.</div>
+      <div class="promise">Abangg janji buat peluk kamu dulu, baru debat kalau perlu.</div>
+      <div class="promise">Abangg janji buat jadi aman buat kamu.</div>
+      <div class="promise">Abangg janji jadi orang sukses.</div>
+      <div class="promise">Abangg janji buat jagain mimpi kamu kayak mimpi Abangg sendiri.</div>
+      <div class="promise">Abangg janji buat jadi rumah, selagi kamu pengen pulang.</div>
+    </section>
+
+    <section class="panel fade-in delay-5" id="countdown">
+      <h2 class="section-title">Ucapannn 💗</h2>
+      <p class="lead">nihhh ucapannn lagiii hehe.</p>
+      <div id="countdownBox">
+        <p id="countdownText">Menghitung mundur...</p>
+      </div>
+    </section>
+
+    <section class="panel fade-in delay-4" id="chat">
+      <h2 class="section-title">💬 Simulasi chat Abangg & Adee</h2>
+      <p class="lead">chattt setiappp pagiiiiii.</p>
+      <div class="chat">
+        <div class="bubble you">sayanggggg: sayangggggg</div>
+        <div class="bubble me">adee comell🤍:baruu bangunnn</div>
+        <div class="bubble you">sayanggggg: semangatttt yaa buat hariii iniiii</div>
+        <div class="bubble me">adee comell🤍: iyaaaa, abangg jugaa</div>
+      </div>
+      <div style="margin-top:10px">
+        <button class="btn glass small" id="addChat">➕ Tambah chat</button>
+      </div>
+    </section>
+
+    <section class="panel fade-in delay-5" id="quotes">
+      <h2 class="section-title">🕯️ Kutipan kecil buat Adee</h2>
+      <p class="lead">Baca perlahan, rasakan.</p>
+      <div class="quote">“Aku nggak mau cari yang sempurna. Aku mau kamu.”</div>
+      <div class="quote">“Kalau dunia bising, mari kita berdua pelan.”</div>
+      <div class="quote">“Kamu bukan kebetulan. Kamu pilihan.”</div>
+      <div class="quote">“Kamu nggak perlu jadi orang lain buat dicintai.”</div>
+      <div class="quote">“Peluk itu bahasa yang selalu benar.”</div>
+      <div style="margin-top:10px">
+        <span class="easter" id="egg">Klik aku kalau kamu sayang Abangg 😘</span>
+      </div>
+      <div id="secretMessage" class="reveal" style="margin-top:10px;">
+        Adee, kamu bukan cuma pacar. Kamu rumah, kamu semesta, kamu segalanya. 💘
+      </div>
+    </section>
+
+    <section class="panel fade-in delay-6" id="faq">
+      <h2 class="section-title">❓ Pertanyaan yang sering Adee tanya</h2>
+      <div class="grid-3">
+        <div class="fact">
+          <strong>Kalau kita lagi marahan?</strong>
+          <p>Peluk dulu. Baru ngomong. Kita bukan lawan—kita tim.</p>
+        </div>
+        <div class="fact">
+          <strong>Kamu sayang aku sampai kapan?</strong>
+          <p>Sampai “selamanya” berhenti terasa berlebihan.</p>
+        </div>
+        <div class="fact">
+          <strong>Kalau aku insecure?</strong>
+          <p>Abangg bakal ingetin: kamu cukup, kamu berharga, kamu dicintai.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel fade-in delay-7" id="contact">
+      <h2 class="section-title">📬 Titip pesan buat Abangg</h2>
+      <p class="lead">Ketik apa pun yang kamu mau, Adee. Abangg dengerin.</p>
+      <form id="form">
+        <div class="split">
+          <div>
+            <label for="nama">Nama kamu</label>
+            <input id="nama" name="nama" type="text" placeholder="Adee" style="width:100%;padding:10px;border-radius:10px;border:1px solid #ddd;">
+          </div>
+          <div>
+            <label for="judul">Judul pesan</label>
+            <input id="judul" name="judul" type="text" placeholder="Peluk dulu, baru ngomong" style="width:100%;padding:10px;border-radius:10px;border:1px solid #ddd;">
+          </div>
+        </div>
+        <div style="margin-top:12px">
+          <label for="pesan">Pesan</label>
+          <textarea id="pesan" name="pesan" rows="4" placeholder="Tulis di sini..." style="width:100%;padding:10px;border-radius:10px;border:1px solid #ddd;"></textarea>
+        </div>
+        <div style="margin-top:12px">
+          <button type="button" class="btn" id="kirim">Kirim ke Abangg 💌</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel fade-in delay-6" id="extras">
+      <h2 class="section-title">🎭 Bonus interaktif</h2>
+      <p class="lead">Hal-hal kecil yang bikin halaman ini hidup.</p>
+      <div class="grid-3">
+        <div class="fact">
+          <strong>Mode malam romantis</strong>
+          <p>Tekan tombol 🌙 di atas untuk beralih suasana.</p>
+        </div>
+        <div class="fact">
+          <strong>Partikel cinta</strong>
+          <p>Hati kecil bakal naik perlahan di latar belakang.</p>
+        </div>
+        <div class="fact">
+          <strong>Surprise modal</strong>
+          <p>Klik tombol 🎁 untuk lihat kejutan.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel fade-in delay-4" id="credits">
+      <h2 class="section-title">🖊️ Catatan kecil</h2>
+      <p class="lead credits">
+        Dibuat khusus untuk Adee dari Abangg — GF Day, versi cinematic, interaktif, dan penuh cinta.
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div>Made with 💖 by Abangg untuk Adee — GF Day 2025</div>
+      <div style="margin-top:6px">Kalau kamu senyum pas lihat ini, misi Abangg berhasil.</div>
+    </div>
+  </footer>
+
+  <div class="overlay" id="overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title">🎁 Kejutan kecil</div>
+        <button class="close" id="closeSurprise">×</button>
+      </div>
+      <div style="padding:12px 0">
+        <p>Ini bukan halaman biasa. Ini halaman tempat Abangg jatuh cinta lagi ke kamu.</p>
+        <p>Setiap klik, setiap scroll, itu Abangg bilang “aku milih kamu”.</p>
+        <div class="rose"></div>
+        <p style="margin-top:10px">Terima kasih udah jadi Adee — yang bikin dunia Abangg lebih pelan, lebih hangat, lebih hidup.</p>
+      </div>
+      <div style="display:flex;gap:10px;justify-content:flex-end">
+        <button class="btn glass small" id="modalLove">💘 Aku sayang kamu</button>
+        <button class="btn small" id="modalClose">Tutup</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Toggle dark mode
+    const darkToggle = document.getElementById('darkModeToggle');
+    darkToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+    });
+
+    // Love message reveal
+    const loveBtn = document.getElementById('loveBtn');
+    const message = document.getElementById('message');
+    loveBtn.addEventListener('click', () => {
+      message.classList.add('show');
+      loveBtn.textContent = 'Abangg sayang Adee selamanya 💘';
+      loveBtn.style.background = '#ff85a2';
+    });
+
+    // Surprise modal
+    const overlay = document.getElementById('overlay');
+    const showSurprise = document.getElementById('showSurprise');
+    const closeSurprise = document.getElementById('closeSurprise');
+    const modalClose = document.getElementById('modalClose');
+    const modalLove = document.getElementById('modalLove');
+
+    showSurprise.addEventListener('click', () => overlay.classList.add('show'));
+    closeSurprise.addEventListener('click', () => overlay.classList.remove('show'));
+    modalClose.addEventListener('click', () => overlay.classList.remove('show'));
+    modalLove.addEventListener('click', () => {
+      alert('Adee, kamu semesta Abangg 💘');
+      overlay.classList.remove('show');
+    });
+
+    // YouTube thumbnail click-to-play
+    const videoWrapper = document.getElementById('videoWrapper');
+    const ytPlayer = document.getElementById('ytPlayer');
+    videoWrapper.addEventListener('click', () => {
+      videoWrapper.style.display = 'none';
+      ytPlayer.classList.add('show');
+      const iframe = ytPlayer.querySelector('iframe');
+      iframe.src = 'https://www.youtube.com/embed/2Vv-BfVoq4g?autoplay=1&rel=0&showinfo=0';
+    });
+
+    // Easter egg
+    const egg = document.getElementById('egg');
+    const secret = document.getElementById('secretMessage');
+    egg.addEventListener('click', () => {
+      secret.classList.add('show');
+    });
+
+    // Add chat
+    const addChat = document.getElementById('addChat');
+    const chat = document.querySelector('.chat');
+    addChat.addEventListener('click', () => {
+      const me = document.createElement('div');
+      me.className = 'bubble me';
+      me.textContent = 'Abangg: Kita nggak perlu sempurna buat bahagia.';
+      chat.appendChild(me);
+      const you = document.createElement('div');
+      you.className = 'bubble you';
+      you.textContent = 'Adee: Iya, yang penting kita terus milih satu sama lain.';
+      chat.appendChild(you);
+    });
+
+    // Form
+    const kirim = document.getElementById('kirim');
+    kirim.addEventListener('click', () => {
+      const nama = document.getElementById('nama').value.trim() || 'Adee';
+      const judul = document.getElementById('judul').value.trim() || 'Pesan dari Adee';
+      const pesan = document.getElementById('pesan').value.trim() || 'Aku sayang Abangg!';
+      alert(`${judul}\nDari: ${nama}\n\n${pesan}`);
+    });
+
+    // Scroll reveal
+    const onScrollReveal = () => {
+      document.querySelectorAll('.reveal').forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) el.classList.add('show');
+      });
+    };
+    window.addEventListener('scroll', onScrollReveal);
+    window.addEventListener('load', onScrollReveal);
+
+    // Countdown (set target date)
+    const target = new Date(new Date().getFullYear(), 1, 1, 0, 0, 0); // 1 Desember (contoh)
+    const countdownText = document.getElementById('countdownText');
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = target - now;
+      if (diff <= 0) {
+        countdownText.textContent = 'Selamat hariii girlfriends! 🎉';
+        return;
+      }
+      const days = Math.floor(diff / (1000*60*60*24));
+      const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+      const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
+      const secs = Math.floor((diff % (1000*60)) / 1000);
+      countdownText.textContent = `${days} hari • ${hours} jam • ${mins} menit • ${secs} detik`;
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Heart particle animation
+    const canvas = document.getElementById('heartCanvas');
+    const ctx = canvas.getContext('2d');
+    let W = canvas.width = window.innerWidth;
+    let H = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      W = canvas.width = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    });
+
+    const hearts = [];
+    const MAX = 100;
+
+    function spawnHeart() {
+      const size = Math.random() * 16 + 6;
+      const heart = {
+        x: Math.random() * W,
+        y: H + 20,
+        size,
+        speed: Math.random() * 0.8 + 0.6,
+        alpha: Math.random() * 0.5 + 0.3,
+        drift: (Math.random() - 0.5) * 0.6
+      };
+      hearts.push(heart);
+    }
+
+    function drawHeart(h) {
+      const s = h.size;
+      ctx.beginPath();
+      ctx.moveTo(h.x, h.y);
+      ctx.bezierCurveTo(h.x + s/2, h.y - s, h.x + s*1.5, h.y + s/2, h.x, h.y + s);
+      ctx.bezierCurveTo(h.x - s*1.5, h.y + s/2, h.x - s/2, h.y - s, h.x, h.y);
+      ctx.fillStyle = `rgba(255, 77, 109, ${h.alpha})`;
+      ctx.fill();
+    }
+
+    function animateHearts() {
+      ctx.clearRect(0, 0, W, H);
+      if (hearts.length < MAX) spawnHeart();
+      for (let i = 0; i < hearts.length; i++) {
+        const h = hearts[i];
+        h.y -= h.speed;
+        h.x += h.drift;
+        drawHeart(h);
+        if (h.y < -30) {
+          hearts.splice(i, 1);
+          i--;
+        }
+      }
+      requestAnimationFrame(animateHearts);
+    }
+    animateHearts();
+  </script>
+</body>
+</html>
+```
